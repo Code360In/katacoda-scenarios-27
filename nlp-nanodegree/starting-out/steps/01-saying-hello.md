@@ -7,7 +7,7 @@ You can execute snippets of code directly from the panel here.
 Once in the appropriate folder, we can execute a script below. Feel free to explore the content in the folder as well.
 
 ```bash
-cd sandbox/02-Test-run
+cd sandbox/01-Demo-challenge
 ```{{execute}}
 
 

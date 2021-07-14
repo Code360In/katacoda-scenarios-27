@@ -1,8 +1,8 @@
 {
   "title": "NLP Nanodegree",
-  "description": "Lesson 1 of Starting Out",
+  "description": "Lesson 1 of Bag-of-words",
   "difficulty": "Beginner",
-  "time": "3 minutes",
+  "time": "2 days",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -10,8 +10,12 @@
     },
     "steps": [
       {
-        "title": "01 Demo challenge",
-        "text": "steps/01-saying-hello.md"
+        "title": "01 Introduction",
+        "text": "steps/01-intro.md"
+      },
+      {
+        "title": "02 Theory",
+        "text": "steps/02-theory.md"
       }
     ],
     "finish": {
