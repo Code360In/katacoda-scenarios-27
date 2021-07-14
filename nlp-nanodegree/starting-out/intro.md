@@ -5,44 +5,17 @@
 
 
 ````
-pip install pandas-profiling==2.7.1
-pip install contractions
-pip install s3fs
-sudo apt-get install tree
-
-
-%time
-import os
-import sys
-import warnings
-if not sys.warnoptions:
-    warnings.simplefilter("ignore")
-
-import numpy as np
-import pandas as pd
-pd.set_option('display.max_rows', 500)
-pd.set_option('display.max_columns', 500)
-pd.set_option('display.width', 1000)
-from pandas_profiling import ProfileReport
-
-import matplotlib.pyplot as plt
-import seaborn as sns
-%matplotlib inline
-from plotly import graph_objs as go
-import plotly.express as px
-import plotly.figure_factory as ff
-import seaborn as sns
-from matplotlib_venn import venn3, venn3_circles
-from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
-
-import sklearn
-import itertools
-import unicodedata
-
-import string
-import re
-import nltk
-import contractions
-from bs4 import BeautifulSoup
+pip install matplotlib
+pip install numpy>=1.18.1
+pip install pandas
+pip install nltk==3.4.5
+nltk.download("stop_words")
+pip install sklearn
+pip install gensim==3.8.1
+pip install wordcloud==1.6.0
+pip install tensorflow==1.14.0
+pip install keras==2.3.1
+pip install sentence-transformers==0.2.5
+pip install umap-learn==0.3.10
 ````
 
