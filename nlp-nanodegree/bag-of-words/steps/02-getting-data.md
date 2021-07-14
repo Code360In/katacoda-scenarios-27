@@ -1,2 +1,0 @@
-## Gathering the data
-
