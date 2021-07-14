@@ -1,0 +1,39 @@
+{
+  "title": "NLP Nanodegree",
+  "description": "Bag Of Words method",
+  "difficulty": "Intermediate",
+  "time": "2 days",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "code": "set-env.sh"
+    },
+    "steps": [
+      {
+        "title": "01 Introduction",
+        "text": "steps/01-introduction.md"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "client": [
+        {
+          "file": "*",
+          "target": "~/sandbox",
+          "chmod": "+r"
+        }
+      ]
+    }
+  },
+  "environment": {
+    "hideintro": false,
+    "hideHiddenFiles": false,
+    "uilayout": "editor-terminal",
+    "uieditorpath": "sandbox",
+  },
+  "backend": {
+    "imageid": "python:3.8"
+  }
+}
