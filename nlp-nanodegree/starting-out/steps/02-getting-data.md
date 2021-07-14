@@ -1,8 +1,7 @@
-## Gathering the data
+## Challenge
 
-In this lesson, we will set about learning to deal with data handling.
+In this lesson, we will get acquainted with the layout of Katacoda.
 
-* loading datasets
-* API
-
-
+```python
+python3 hello.py{execute}
+```
