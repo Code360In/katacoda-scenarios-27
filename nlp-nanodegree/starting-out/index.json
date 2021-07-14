@@ -2,7 +2,7 @@
   "title": "NLP Nanodegree",
   "description": "Lesson 1 of Starting Out",
   "difficulty": "Beginner",
-  "time": "1 hour",
+  "time": "3 minutes",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -14,8 +14,8 @@
         "text": "steps/01-intro.md"
       },
       {
-        "title": "02 Getting the data",
-        "text": "steps/02-getting-data.md"
+        "title": "02 Demo challenge",
+        "text": "steps/02-saying-hello.md"
       }
     ],
     "finish": {

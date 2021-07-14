@@ -1,4 +1,4 @@
-## Challenge
+## Demo challenge
 
 In this lesson, we will get acquainted with the layout of Katacoda.
 
