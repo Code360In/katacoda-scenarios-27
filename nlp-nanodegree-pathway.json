@@ -7,6 +7,11 @@
       "course_id": "starting-out",
       "title": "Starting Out",
       "description": "Starting Out"
-    }
+    },
+    {
+      "course_id": "bag-of-words",
+      "title": "Bag of Words",
+      "description": "Bag of Words"
+    },
   ]
 }
