@@ -106,7 +106,7 @@ By marking the presence or absence of words in a sentence, we then start to have
 Additionally, we can create groupings of commonly co-occurring words. A bi-gram, or trigram model, will track the presence of a two or three word pair, respectively. This helps in more accurate topic identification of a document, as we can imagine if we want to preserve the occurrence of a term like 'natural', 'language', and 'preprocessing' for example. 
 
 ### Python implementation
-[Here we provide the python code](_recipe/01-Introduction/count_vectorizer_example.py) which uses the CountVectorizer function from the scikit learn library to derive the essential features extracted from our input, as seen below. Steps 1-5 indicate the preprocessing portions of our BOW pipeline. Step 6 shows how this function returns the output of essential features and the vector representation of each of our input sentences.
+[Here we provide the python code](_recipe/01-Introduction/count_vectorizer_example.py) which uses the [CountVectorizer function from the scikit learn library](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html) to derive the essential features extracted from our input, as seen below. Steps 1-5 indicate the preprocessing portions of our BOW pipeline. Step 6 shows how this function returns the output of essential features and the vector representation of each of our input sentences.
 
 ![CountVectorizer snippet](_recipes/01-Introduction/count_vectorizer_snippet.png)
 
@@ -117,12 +117,12 @@ Additionally, we can create groupings of commonly co-occurring words. A bi-gram,
 ## Limitations
 ### Size
 
-As the size of the dictionary increases with new encoded data, so too does the length of the vector representing those documents. If we apply this approach on thousands of children's stories for example, the length of the vector could be hundreds of thousands of positions long, with some documents using very few of the tokenized words in the vocabulary. This can create a vector with many zeros, a sparse representation of the data, which is difficult to model in terms of memory restrictions and computational resources. 
+As the size of the dictionary increases with new encoded data, so too does the length of the vector representing those documents. If we apply this approach on thousands of children's stories for example, the length of the vector could be hundreds of thousands of positions long, with some documents using very few of the tokenized words in the vocabulary. **This can create a vector with many zeros, a sparse representation of the data**, which is difficult to model in terms of memory restrictions and computational resources. 
 
 Accordingly, strategies to reduce the dimensional space of a BOW model take place at the preprocessing stage, where text is stripped of punctuation, stop words, spelling is corrected and case is normalized.
 
 ### Context
 
-Finally, relying simply on the presence of a word and ignoring the order means that the context or semantic content is not included in the model. 
+Finally, relying simply on the presence of a word and ignoring the order means that **the context or semantic content is not included in the mode**l. 
 
 Other common word embedding approaches involve slightly more sophisticated methods of scoring, which we mentioned earlier with TF-IDF and word2vec. These methods attempt to capture the semantic representation of the word embeddings for more accurate feature extraction.
