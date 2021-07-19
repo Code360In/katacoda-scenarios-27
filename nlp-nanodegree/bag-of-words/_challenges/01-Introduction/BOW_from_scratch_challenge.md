@@ -122,11 +122,11 @@ We take the tokenized list of our cleaned corpus, and create a dictionary to sto
 
 ### Filter the dictionary
 
-We can use the following function to filter our dictionary to the top 20 most frequently occurring words
+We can use the following function to filter our dictionary to the top 25 most frequently occurring words
 
 ```python
 import heapq # 
-most_freq = heapq.nlargest(5, wordfreq, key=wordfreq.get)
+most_freq = heapq.nlargest(25, wordfreq, key=wordfreq.get)
 ```
 
 ### Vectorize
