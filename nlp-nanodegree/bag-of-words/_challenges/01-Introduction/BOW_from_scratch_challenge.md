@@ -20,25 +20,17 @@ python3 -m venv /path/to/new/virtual/environment
 
 We will need the following packages.
 ```python
-import nltk  
+import sys
 import numpy as np  
-import sklearn
 import string
-import pandas as pd
 import bs4 as bs  
 import urllib.request  
-import re
-import sys
 ```
 Check that your system includes the following packages, and the versions match the versions below.
 
 ```python
 print("Python version:", sys.version)
-print("Version info.:", sys.version_info)
-print("pandas version:", pd.__version__)
 print("numpy version:", np.__version__)
-print("skearn version:", sklearn.__version__)
-print("re version:", re.__version__)
 print("nltk version:", nltk.__version__)
 ```
 
@@ -107,13 +99,12 @@ Now that we have the raw text extracted from the the articles, we can then begin
 ```
 
 ### Lemmatize
+Once we have stripped the corpus of punctuation and normalized case. removed the stop words, numbers and lemmatized the grammatical variation of the words  ('tanning', 'tans' -> 'tan), we are ready to build our vocabulary.
 
 ```python
 # Iterate through the list of sentences and remove lemmatize the tokens
 
 ```
-Once we have stripped the corpus of punctuation and normalized case. removed the stop words, numbers and lemmatized the grammatical variation of the words  ('tanning', 'tans' -> 'tan), we are ready to build our vocabulary.
-
 
 ### Build vocabulary using a dictionary
 We take the tokenized list of our cleaned corpus, and create a dictionary to store these words as the key and their corresponding frequency as the value.
@@ -132,13 +123,16 @@ We take the tokenized list of our cleaned corpus, and create a dictionary to sto
 ### Filter the dictionary
 
 We can use the following function to filter our dictionary to the top 20 most frequently occurring words
-```
+
+```python
 import heapq # 
 most_freq = heapq.nlargest(5, wordfreq, key=wordfreq.get)
 ```
 
 ### Vectorize
+
 At our final stage in the BOW pipeline, we convert the corpus into its vector representation. 
+
 ```python
 # Create a list object to store all the sentence vectors
 
@@ -148,3 +142,6 @@ At our final stage in the BOW pipeline, we convert the corpus into its vector re
 
 # Add each of of the individual vector back to list object which stores all sentence vectors to represent as a matrix
 ```
+
+### BOW model
+You can see the BOW model, containing either 0 and 1, if that feature is found in each document.

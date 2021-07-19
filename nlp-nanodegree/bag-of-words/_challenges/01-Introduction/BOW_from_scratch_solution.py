@@ -1,22 +1,23 @@
-import nltk  
+import sys
 import numpy as np  
-import sklearn
 import string
-import pandas as pd
 import bs4 as bs  
 import urllib.request  
-import re
-import sys
+
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords 
+from nltk.stem import WordNetLemmatizer
+import string
+
+import heapq
 
 print("Python version:", sys.version)
-print("Version info.:", sys.version_info)
-print("pandas version:", pd.__version__)
 print("numpy version:", np.__version__)
-print("skearn version:", sklearn.__version__)
-print("re version:", re.__version__)
 print("nltk version:", nltk.__version__)
 
-# # Getting the data
+
+# Getting the data
 urls = ['https://en.wikipedia.org/wiki/Natural_language_processing', 'https://en.wikipedia.org/wiki/Bag_of_words', 'https://en.wikipedia.org/wiki/Computer_vision']
 def scrape_articles(urls):
     article_text = ''
@@ -33,12 +34,7 @@ def scrape_articles(urls):
 
 sentences = scrape_articles(urls)
 
-
-from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords 
-from nltk.stem import WordNetLemmatizer
-import string
-
+# Cleaning the data
 def clean (sentences):
     clean_sentences = []
     for text in sentences:
@@ -65,8 +61,8 @@ clean_sentences = clean(sentences)
 
 tokenized_sentences = [sub.split() for sub in clean_sentences]
 
+# Create the dictionary
 wordfreq = {}
-
 for tok_sen in tokenized_sentences:
     for token in tok_sen:
         if token not in wordfreq.keys():
@@ -74,9 +70,9 @@ for tok_sen in tokenized_sentences:
         else:
             wordfreq[token] += 1
 
-import heapq # 
 most_freq = heapq.nlargest(25, wordfreq, key=wordfreq.get)
 
+# Create the individual vector representations of sentences, and store in list
 sentence_vectors = []
 for sentence in tokenized_sentences:
     sent_vec = []
@@ -86,6 +82,8 @@ for sentence in tokenized_sentences:
         else:
             sent_vec.append(0)
     sentence_vectors.append(sent_vec)
+
+# BOW model output
 print(f"Essential features extracted from corpus: {most_freq}")
 print("\n")
 sentence_vectors = np.asarray(sentence_vectors)
