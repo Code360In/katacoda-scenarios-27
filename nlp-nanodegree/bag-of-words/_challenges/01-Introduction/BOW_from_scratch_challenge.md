@@ -3,6 +3,7 @@
 We have seen previously that the CountVectorizer function can perform the vectorization for the BOW model with only a few lines of code. Let us walk through each step of the process, this time through the coded implementation. 
 
 ## Objectives
+0. Extract the data
 1. Clean the text extracted from Wikipedia articles
 2. Tokenize the cleaned corpus
 3. Create a dictionary of the tokenized words
@@ -57,57 +58,74 @@ for para in article_paragraphs:
     article_text += para.text
 ```
 
-Above shows article text extracted from the Wikipedia article on Natural Langugae Preprocessing. Let's build our corpus with additional articles. Write a function below which makes th url request for the articles from Wikipedia on [Bag of Words](https://en.wikipedia.org/wiki/Bag-of-words_model) and [Computer vision](https://en.wikipedia.org/wiki/Computer_vision), extracts the paragraph text, and stores those strings in a list.
+Let's create our corpus using Wikipedia articles. Using the function below, we will make the url request for Wikipedia articles on [Natural Langugae Processings](https://en.wikipedia.org/wiki/Natural_angugae_processing), [Bag of Words](https://en.wikipedia.org/wiki/Bag-of-words_model) and [Computer vision](https://en.wikipedia.org/wiki/Computer_vision), extract the paragraph text, and return those strings in a list.
 
 ```python
-# Function which takes each raw_html request and returns the extracted paragraphs as strings in a list called documents
+urls = ['https://en.wikipedia.org/wiki/Natural_language_processing', 'https://en.wikipedia.org/wiki/Bag_of_words', 'https://en.wikipedia.org/wiki/Computer_vision']
+def scrape_articles(urls):
+    article_text = ''
+    sentences = []
+    for url in urls:
+        raw_html = urllib.request.urlopen(url)  
+        raw_html = raw_html.read()
+        article_html = bs.BeautifulSoup(raw_html, 'lxml')
+        article_paragraphs = article_html.find_all('p')
+        for para in article_paragraphs:  
+            article_text += para.text
+        sentences.append(article_text)
+    return sentences
+
+sentences = scrape_articles(urls)
+print(f"The corpus consists of {len(sentences)} documents")
 ```
-
-
 
 Now that we have the raw text extracted from the the articles, we can then begin our cleaning steps.
 
 ### Remove punctuation
 
 ```python
+# Iterate through the list of sentences and remove punctuation
 ```
 
 ### Lowercase
 
 ```python
+# Iterate through the list of sentences and normalize the case
 ```
 
 ### Remove stop words
 
 ```python
+# Iterate through the list of sentences and remove stop words
 ```
 
 ### Remove numbers
 
 ```python
+# Iterate through the list of sentences and remove numbers
+
 ```
 
 ### Lemmatize
 
 ```python
-```
-Once we have stripped the corpus of punctation and normalized case. removed the stop words, numbers and lemmatized the grammatical variation of the words  ('tanning', 'tans' -> 'tan), we are ready to build our vocabulary.
+# Iterate through the list of sentences and remove lemmatize the tokens
 
-### Tokenize
-```python
 ```
+Once we have stripped the corpus of punctuation and normalized case. removed the stop words, numbers and lemmatized the grammatical variation of the words  ('tanning', 'tans' -> 'tan), we are ready to build our vocabulary.
+
 
 ### Build vocabulary using a dictionary
 We take the tokenized list of our cleaned corpus, and create a dictionary to store these words as the key and their corresponding frequency as the value.
 
 ```python
-# Tokenize the corpus
+# Tokenize each string from list in the corpus
 
 # Create a dictionary to store word and frequency pairs
 
-# Iterate through each sentence in the corpus and tokenize into words
+# Iterate through each sentence list in the tokenized sentences
 
-# Iterate through each word n the sentence, if the word is not found in the dictionary keys, add to dictionary; if the word is found inthe dictionary, increment the value count of its frequency by 1. 
+# Iterate through each word in the sentence list, if the word is not found in the dictionary keys, add to dictionary; if the word is found in the dictionary, increment the value count of its frequency by 1. 
 
 ```
 
@@ -122,7 +140,11 @@ most_freq = heapq.nlargest(5, wordfreq, key=wordfreq.get)
 ### Vectorize
 At our final stage in the BOW pipeline, we convert the corpus into its vector representation. 
 ```python
-# Create a list object to store the text vectorization
+# Create a list object to store all the sentence vectors
 
+# Iterate through each tokenized sentence and create a list object for each sentence vector
 
+# Iterate through each token in the most_freq dictionary, if the word is not found in the dictionary keys, add to dictionary; if the word is found in the tokens for the sentence, append 1 to the individual sentence vector, otherwise append 0. 
+
+# Add each of of the individual vector back to list object which stores all sentence vectors to represent as a matrix
 ```
