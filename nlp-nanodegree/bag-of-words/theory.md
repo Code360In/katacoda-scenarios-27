@@ -103,65 +103,16 @@ By marking the presence or absence of words in a sentence, we then start to have
 
 ### N-gram BOW model
 
-Additionally, we can create groupings of commonly co-occurring words. A bi-gram, or trigram model, will track the presence of a two or three word pair, respectively. This helps in more accurate document classification, as we can imagine if we want to preserve the occurrence of a term like 'natural', 'language', and 'preprocessing' for example. 
+Additionally, we can create groupings of commonly co-occurring words. A bi-gram, or trigram model, will track the presence of a two or three word pair, respectively. This helps in more accurate topic identification of a document, as we can imagine if we want to preserve the occurrence of a term like 'natural', 'language', and 'preprocessing' for example. 
 
 ### Python implementation
-```python
-# Raw text to analyse
-sentences = ["All the better to see with my child, said the wolf.", 
-"My! big teeth you have got! cried Little Red Riding Hood.",
-"All the better to eat you up with, said the wolf."]
+[Here we provide the python code](_recipe/01-Introduction/count_vectorizer_example.py) which uses the CountVectorizer function from the scikit learn library to derive the essential features extracted from our input, as seen below. Steps 1-5 indicate the preprocessing portions of our BOW pipeline. Step 6 shows how this function returns the output of essential features and the vector representation of each of our input sentences.
 
-# Clean the text
-# 1. remove punctuation
-import re
-sentences = [re.sub(r'[^A-Za-z]', ' ', s) for s in sentences]
+![CountVectorizer snippet](_recipes/01-Introduction/count_vectorizer_snippet.png)
 
-# 2. lowercase
-sentences = [s.lower() for s in sentences]
+### Results from CountVectorizer
 
-# 3. tokenize
-import nltk
-nltk.download('punkt')
-from nltk.tokenize import word_tokenize
-tokenized_sentences = [word_tokenize(s) for s in sentences]
-
-# 4. remove stopwords
-nltk.download('stopwords')
-from nltk.corpus import stopwords
-stop = set(stopwords.words('english'))
-clean_sentences = []
-for tok_sen in tokenized_sentences:
-    stop_rem = [word for word in tok_sen if str(word).lower() not in stop]
-    clean_sentences.append(stop_rem)
-
-# Transform clean tokens back into clean sentences
-output = []
-for sent in clean_sentences:
-    output.append(' '.join(sent))
-
-# Create an object
-from sklearn.feature_extraction.text import CountVectorizer
-cv = CountVectorizer()
-
-# Generate the output for the Bag Of Words
-BOW = cv.fit_transform(output)
-
-# All words, including their index to model
-print("Feature names:")
-print(cv.get_feature_names())
-print("\n")
-
-# Show the output
-import pandas as pd
-count_vect_df = pd.DataFrame(BOW.todense(), columns=cv.get_feature_names())
-pd.concat([count_vect_df, count_vect_df], axis=1)
-print("Count vectorizer output:")
-print("\n")
-print(count_vect_df)
-```
-
-![BOW output](_recipe/01-Introduction/count_vectorizer_bow.png)
+![BOW output](_recipes/01-Introduction/count_vectorizer_example_output.png)
 
 ## Limitations
 ### Size
